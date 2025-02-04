@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # Third-party apps
     'rest_framework',
     'django.contrib.gis',
+    'drf_spectacular',
+    'rest_framework_gis',
 
     # Project apps
     'place'
@@ -137,3 +139,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GDAL_LIBRARY_PATH = r'D:\conda\Library\bin\gdal.dll'
 GEOS_LIBRARY_PATH = r'D:\conda\Library\bin\geos_c.dll'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'GEO',
+    'DESCRIPTION': 'GEO',
+    'VERSION': '1.0.0',
+}

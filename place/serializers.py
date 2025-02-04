@@ -1,21 +1,13 @@
 from rest_framework import serializers
-from django.contrib.gis.geos import Point
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from .models import Place, Review
 
 
-class PlaceSerializer(serializers.ModelSerializer):
-    lat = serializers.FloatField(write_only=True)
-    lon = serializers.FloatField(write_only=True)
-
+class PlaceSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Place
-        fields = ["id", "lat", "lon", "location"]
-
-    def create(self, validated_data):
-        lat = validated_data.pop("lat")
-        lon = validated_data.pop("lon")
-        validated_data["location"] = Point(lat, lon)
-        return super().create(validated_data)
+        fields = '__all__'
+        geo_field = 'location'
 
 
 class ReviewSerializer(serializers.ModelSerializer):
