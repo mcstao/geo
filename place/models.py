@@ -4,7 +4,7 @@ class Place(models.Model):
     location = models.PointField()
 
     def __str__(self):
-        return f"({self.location.y}, {self.location.x})"
+        return f"({self.location.x}, {self.location.y})"
 
 
 class Review(models.Model):
